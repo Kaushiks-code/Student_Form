@@ -1,4 +1,4 @@
-# Student_FormStudent Form Website
+# Student_Form
 
 A simple Student Form Website built using HTML, CSS, and JavaScript. This project allows users to enter student details, save them, display them in a table, and delete student records dynamically.
 
