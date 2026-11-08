@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <body>
+
+        <h1>STUDENT FORM</h1>
+
+        <div class="form-container">
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <td>
+                        <input type="text" id="name" placeholder="Enter Name">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Age</th>
+                    <td>
+                        <input type="number" id="age" placeholder="Enter Age">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Gender</th>
+                    <td>
+                        <input type="radio" name="gender" value="Male" checked>
+                        Male
+
+                        <input type="radio" name="gender" value="Female">
+                        Female
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Course</th>
+                    <td>
+                        <select id="course">
+                            <option>JavaScript</option>
+                            <option>Python</option>
+                            <option>Java</option>
+                            <option>HTML</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>E-mail</th>
+                    <td>
+                        <input type="email" id="email" placeholder="Enter Email">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <button class="save" onclick="saveStudent()">
+                            Save
+                        </button>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <table id="studentTable">
+            <tr>
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>COURSE</th>
+                <th>GENDER</th>
+                <th>EMAIL</th>
+                <th>ACTION</th>
+            </tr>
+
+            <tr>
+                <td>Amal</td>
+                <td>22</td>
+                <td>PYTHON</td>
+                <td>Male</td>
+                <td>Amal@gmail.com</td>
+                <td>
+                    <button class="delete" onclick="deleteStudent(this)">Delete</button>
+                </td>
+            </tr>
+        </table>
+
+        <script>
+
+            function saveStudent() {
+
+                var name = document.getElementById("name").value;
+                var age = document.getElementById("age").value;
+                var course = document.getElementById("course").value;
+                var email = document.getElementById("email").value;
+
+                var gender = document.querySelector(
+                    'input[name="gender"]:checked'
+                ).value;
+
+
+                if (name == "" || age == "" || email == "") {
+                    alert("Please fill all the fields!");
+                    return;
+                }
+
+
+                var table = document.getElementById("studentTable");
+
+                var row = table.insertRow();
+
+                row.insertCell(0).innerHTML = name;
+                row.insertCell(1).innerHTML = age;
+                row.insertCell(2).innerHTML = course;
+                row.insertCell(3).innerHTML = gender;
+                row.insertCell(4).innerHTML = email;
+
+                var actionCell = row.insertCell(5);
+
+                actionCell.innerHTML =
+                    '<button class="delete" onclick="deleteStudent(this)">Delete</button>';
+
+
+                document.getElementById("name").value = "";
+                document.getElementById("age").value = "";
+                document.getElementById("email").value = "";
+
+            }
+
+
+            function deleteStudent(button) {
+
+                button.parentElement.parentElement.remove();
+
+            }
+
+        </script>
+
+    </body>
+
+</body>
+
+</html>
